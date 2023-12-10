@@ -9,11 +9,7 @@
   "parserOptions": {
     "project": true
   },
-  "plugins": [
-    "simple-import-sort",
-    "@typescript-eslint",
-    "redos"
-  ],
+  "plugins": ["simple-import-sort", "@typescript-eslint", "redos"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",

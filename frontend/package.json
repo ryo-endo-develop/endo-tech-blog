@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint-fix": "next lint --fix",
-    "secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
-    "prettier-check": "prettier --cache --check .",
-    "prettier-fix": "prettier --cache --write ."
+    "lint": "run-p --continue-on-error --print-label lint:*",
+    "lint:eslint": "next lint",
+    "lint:prettier": "prettier --cache --check .",
+    "lint:secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
+    "fix": "run-s --continue-on-error fix:*",
+    "fix:eslint": "next lint --fix",
+    "fix:prettier": "prettier --cache --write ."
   },
   "dependencies": {
     "next": "14.0.4",
@@ -30,6 +32,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-redos": "^4.4.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "npm-run-all2": "^6.1.1",
     "postcss": "^8",
     "prettier": "^3.1.1",
     "secretlint": "^8.0.0",
