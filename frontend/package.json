@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'"
+    "secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
+    "prettier-check": "prettier --cache --check .",
+    "prettier-fix": "prettier --cache --write ."
   },
   "dependencies": {
     "next": "14.0.4",
@@ -23,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "prettier": "^3.1.1",
     "secretlint": "^8.0.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
