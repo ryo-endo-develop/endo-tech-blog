@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./backend:/app 
+    depends_on:
+      - db
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app # バインドマウントの設定
+    ports:
+      - 3006:3000
+    environment:
+      - WATCHPACK_POLLING=true
+  db:
+    image: mysql:8.2.0
+    platform: linux/amd64
+    container_name: mysql-container
+    expose:
+      - “3306”
+    env_file:
+      - .env
+    volumes:
+      - ./settings/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./sql:/docker-entrypoint-initdb.d
+volumes:
+  db-store:
