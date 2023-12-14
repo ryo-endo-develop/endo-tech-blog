@@ -1,3 +1,4 @@
+import { siteConfig } from "@/app/model/site.config";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +8,7 @@ const Footer = () => {
             <div className="container px-6 pt-6 flex flex-col items-center max-w-2xl w-full mx-auto">
                 <div className="flex justify-center mb-6 text-white">
                     {/* Twitter */}
-                    <Link href="">
+                    <Link href={siteConfig.twitterUrl}>
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -26,7 +27,7 @@ const Footer = () => {
                     </Link>
 
                     {/* Instagram */}
-                    <Link href="">
+                    <Link href={siteConfig.instagramUrl}>
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -44,7 +45,7 @@ const Footer = () => {
                         </svg>
                     </Link>
                     {/* Github */}
-                    <Link href="">
+                    <Link href={siteConfig.githubUrl}>
                         <svg
                             aria-hidden="true"
                             focusable="false"
