@@ -1,5 +1,5 @@
-import Dashboard from "@/templates/Main/DashboardTemplate";
 import { siteConfig } from "./model/site.config";
+import Dashboard from "./ui/dashboard/page";
 
 export default function Home() {
     return (
