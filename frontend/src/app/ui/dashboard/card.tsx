@@ -1,54 +1,95 @@
-import { BanknotesIcon, ClockIcon, UserGroupIcon, InboxIcon } from "@heroicons/react/24/outline";
-import { lusitana } from "@/app/ui/fonts";
-const iconMap = {
-    collected: BanknotesIcon,
-    customers: UserGroupIcon,
-    pending: ClockIcon,
-    invoices: InboxIcon,
+import Image from "next/image";
+
+export type CardProps = {
+    page: {
+        slug: string;
+        name: string;
+        author: string;
+        cover: string;
+        published: string;
+        tags: string[];
+        content: string;
+    };
 };
 
 export default async function CardWrapper() {
     // const { numberOfInvoices, numberOfCustomers, totalPaidInvoices, totalPendingInvoices } = await fetchCardData();
-    const { numberOfInvoices, numberOfCustomers, totalPaidInvoices, totalPendingInvoices } = {
-        numberOfInvoices: 2,
-        numberOfCustomers: 5,
-        totalPaidInvoices: 10,
-        totalPendingInvoices: 20,
-    };
+    const sampleCards = [
+        {
+            slug: "red",
+            name: "Red",
+            author: "dog",
+            cover: "/",
+            published: "202x-xx-01",
+            tags: ["notion", "nextjs"],
+            content: "Red page content",
+        },
+        {
+            slug: "green",
+            name: "Green",
+            author: "cat",
+            cover: "/",
+            published: "202x-xx-02",
+            tags: ["notion"],
+            content: "Green page content",
+        },
+        {
+            slug: "blue",
+            name: "Blue",
+            author: "bird",
+            cover: "/",
+            published: "202x-xx-03",
+            tags: ["react"],
+            content: "Blue page content",
+        },
+    ];
 
     return (
         <>
-            <Card title="Collected" value={totalPaidInvoices} type="collected" />
-            <Card title="Pending" value={totalPendingInvoices} type="pending" />
-            <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
-            <Card title="Total Customers" value={numberOfCustomers} type="customers" />
+            {sampleCards.map((page, index) => (
+                <Card key={index} page={page} />
+            ))}
         </>
     );
 }
 
-export function Card({
-    title,
-    value,
-    type,
-}: {
-    title: string;
-    value: number | string;
-    type: "invoices" | "customers" | "pending" | "collected";
-}) {
-    const Icon = iconMap[type];
-
+export function Card({ page }: CardProps) {
     return (
-        <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-            <div className="flex p-4">
-                {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-                <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        <>
+            <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+                <div className="rounded overflow-hidden shadow-lg w-full my-4 md:my-0 content-between grid">
+                    {/* image */}
+                    <div className="w-full">
+                        <Image
+                            className="w-full static h-auto"
+                            src={page.cover}
+                            alt=""
+                            objectFit="cover"
+                            width={400}
+                            height={225}
+                            quality={30}
+                        />
+                    </div>
+
+                    {/* title & date */}
+                    <div className="w-full px-6 pt-4">
+                        <h2 className="text-base font-medium mb-3">{page.name}</h2>
+                        <p className="text-gray-700 text-xs">{page.published}</p>
+                    </div>
+
+                    {/* tag */}
+                    <div className="w-full px-6 pb-4">
+                        {page.tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="text-sm px-2 py-1 font-normal bg-gray-200 rounded-lg break-words mr-2 mb-2"
+                            >
+                                {`#${tag}`}
+                            </span>
+                        ))}
+                    </div>
+                </div>
             </div>
-            <p
-                className={`${lusitana.className}
-            truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-            >
-                {value}
-            </p>
-        </div>
+        </>
     );
 }
