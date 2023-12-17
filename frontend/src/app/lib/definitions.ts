@@ -71,7 +71,9 @@ export type PageProps = {
     author: string;
     cover: string;
     published: string;
+    updated: string;
     tags: string[];
+    type: ArticleTagType[];
     content: string;
 };
 

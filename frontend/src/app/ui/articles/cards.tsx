@@ -82,7 +82,7 @@ export function Card({ title, value, type }: { title: string; value: number | st
     const Icon = articleTagIconMap[type];
 
     return (
-        <Link href={`/dashboard/articles/categories`}>
+        <Link href={`/dashboard/articles/categories/${type}`}>
             <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
                 <div className="flex p-4">
                     {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}

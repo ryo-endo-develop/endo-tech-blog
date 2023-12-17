@@ -76,7 +76,7 @@ export function Card({ page }: CardProps) {
                         {/* title & date */}
                         <div className="w-full px-6 pt-4">
                             <h2 className="text-base font-medium mb-3">{page.name}</h2>
-                            <p className="text-gray-700 text-xs">{page.published}</p>
+                            <p className="text-gray-700 text-xs mb-2">{page.published}</p>
                         </div>
 
                         {/* tag */}
