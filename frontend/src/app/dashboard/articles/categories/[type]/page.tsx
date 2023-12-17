@@ -1,4 +1,5 @@
 import { ArticleTagType, PageProps } from "@/app/lib/definitions";
+import Pagination from "@/app/ui/articles/pagenation";
 import { Card } from "@/app/ui/dashboard/card";
 import Search from "@/app/ui/search";
 
@@ -55,6 +56,8 @@ export default function Page({
         ? selectedCards.filter((card) => card.tags.includes(query))
         : selectedCards;
 
+    const totalPages = sampleCards.length;
+
     return (
         <>
             <div className="mt-4 mb-4 flex items-center justify-between gap-2 md:mt-8">
@@ -64,6 +67,9 @@ export default function Page({
                 {filteredCards.map((page, index) => (
                     <Card key={index} page={page} />
                 ))}
+            </div>
+            <div className="mt-5 flex w-full justify-center">
+                <Pagination totalPages={totalPages} />
             </div>
         </>
     );
