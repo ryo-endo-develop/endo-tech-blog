@@ -8,7 +8,6 @@ import {
     CodeBracketIcon,
     CpuChipIcon,
     DevicePhoneMobileIcon,
-    DocumentIcon,
     DocumentMinusIcon,
     GiftIcon,
     GlobeAltIcon,
@@ -64,4 +63,18 @@ export type ArticleCards = {
 
 export type ArchiveCards = {
     year: string;
+};
+
+export type PageProps = {
+    slug: string;
+    name: string;
+    author: string;
+    cover: string;
+    published: string;
+    tags: string[];
+    content: string;
+};
+
+export type ArticleProps = {
+    page: PageProps;
 };

@@ -1,4 +1,5 @@
 import { ArticleCards, ArticleTagType, articleTagIconMap } from "@/app/lib/definitions";
+import Link from "next/link";
 export default async function CardWrapper() {
     const sampleCards: ArticleCards[] = [
         {
@@ -81,12 +82,14 @@ export function Card({ title, value, type }: { title: string; value: number | st
     const Icon = articleTagIconMap[type];
 
     return (
-        <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-            <div className="flex p-4">
-                {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-                <h3 className="ml-2 text-sm font-medium">{title}</h3>
-                <span className="ml-2 text-sm font-medium">({value})</span>
+        <Link href={`/dashboard/articles/categories`}>
+            <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+                <div className="flex p-4">
+                    {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
+                    <h3 className="ml-2 text-sm font-medium">{title}</h3>
+                    <span className="ml-2 text-sm font-medium">({value})</span>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 }
