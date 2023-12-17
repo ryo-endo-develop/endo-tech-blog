@@ -47,6 +47,50 @@ export default function Page({
             tags: ["editor"],
             content: "Blue page content",
         },
+        {
+            slug: "blue",
+            name: "Blue",
+            author: "bird",
+            cover: "/",
+            published: "202x-xx-03",
+            updated: "202x-xx-01",
+            type: ["programmingLanguage"],
+            tags: ["editor"],
+            content: "Blue page content",
+        },
+        {
+            slug: "blue",
+            name: "Blue",
+            author: "bird",
+            cover: "/",
+            published: "202x-xx-03",
+            updated: "202x-xx-01",
+            type: ["programmingLanguage"],
+            tags: ["editor"],
+            content: "Blue page content",
+        },
+        {
+            slug: "blue",
+            name: "Blue",
+            author: "bird",
+            cover: "/",
+            published: "202x-xx-03",
+            updated: "202x-xx-01",
+            type: ["programmingLanguage"],
+            tags: ["editor"],
+            content: "Blue page content",
+        },
+        {
+            slug: "blue",
+            name: "Blue",
+            author: "bird",
+            cover: "/",
+            published: "202x-xx-03",
+            updated: "202x-xx-01",
+            type: ["programmingLanguage"],
+            tags: ["editor"],
+            content: "Blue page content",
+        },
     ];
     const selectedCards: PageProps[] = sampleCards.filter((card) => card.type.includes(params.type));
     if (!selectedCards) {
@@ -56,7 +100,12 @@ export default function Page({
         ? selectedCards.filter((card) => card.tags.includes(query))
         : selectedCards;
 
-    const totalPages = sampleCards.length;
+    const pageSize = 6;
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const displayedCards = filteredCards.slice(startIndex, endIndex);
+
+    const totalPages = Math.ceil(filteredCards.length / pageSize);
 
     return (
         <>
@@ -64,7 +113,7 @@ export default function Page({
                 <Search placeholder="Search articles..." />
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredCards.map((page, index) => (
+                {displayedCards.map((page, index) => (
                     <Card key={index} page={page} />
                 ))}
             </div>
