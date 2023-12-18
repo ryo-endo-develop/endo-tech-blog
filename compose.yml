@@ -21,6 +21,8 @@ services:
       - 3006:3000
     environment:
       - WATCHPACK_POLLING=true
+    env_file:
+      - ./frontend/.env
   db:
     image: mysql:8.2.0
     platform: linux/amd64
