@@ -93,9 +93,6 @@ export default function Page({
         },
     ];
     const selectedCards: PageProps[] = sampleCards.filter((card) => card.type.includes(params.type));
-    if (!selectedCards) {
-        return;
-    }
     const filteredCards: PageProps[] = query
         ? selectedCards.filter((card) => card.tags.includes(query))
         : selectedCards;

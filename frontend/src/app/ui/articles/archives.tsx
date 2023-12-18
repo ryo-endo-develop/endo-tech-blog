@@ -1,5 +1,5 @@
 import { ArchiveCards } from "@/app/lib/definitions";
-export default async function ArchiveWrapper() {
+export default function ArchiveWrapper() {
     const sampleCards: ArchiveCards[] = [
         {
             year: "2023",

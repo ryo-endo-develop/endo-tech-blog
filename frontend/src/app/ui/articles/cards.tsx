@@ -1,6 +1,7 @@
-import { ArticleCards, ArticleTagType, articleTagIconMap } from "@/app/lib/definitions";
 import Link from "next/link";
-export default async function CardWrapper() {
+
+import { ArticleCards, articleTagIconMap, ArticleTagType } from "@/app/lib/definitions";
+export default function CardWrapper() {
     const sampleCards: ArticleCards[] = [
         {
             title: "プログラミング言語",
@@ -85,7 +86,7 @@ export function Card({ title, value, type }: { title: string; value: number | st
         <Link href={`/dashboard/articles/categories/${type}`}>
             <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
                 <div className="flex p-4">
-                    {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
+                    <Icon className="h-5 w-5 text-gray-700" />
                     <h3 className="ml-2 text-sm font-medium">{title}</h3>
                     <span className="ml-2 text-sm font-medium">({value})</span>
                 </div>

@@ -1,6 +1,7 @@
-import { ArticleProps } from "@/app/lib/definitions";
 import Image from "next/image";
 import { FC } from "react";
+
+import { ArticleProps } from "@/app/lib/definitions";
 
 const ArticleMeta: FC<ArticleProps> = ({ page }) => {
     return (

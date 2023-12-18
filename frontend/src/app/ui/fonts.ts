@@ -1,5 +1,5 @@
 import { Inter, Lusitana } from "next/font/google";
-import { Noto_Sans_JP } from "next/font/google";
+// import { Noto_Sans_JP } from "next/font/google";
 
 export const inter = Inter({ subsets: ["latin"] });
 export const lusitana = Lusitana({
@@ -7,8 +7,8 @@ export const lusitana = Lusitana({
     subsets: ["latin"],
 });
 
-const notoSansJP = Noto_Sans_JP({
-    weight: ["400", "700"],
-    subsets: ["latin"],
-    preload: true,
-});
+// const notoSansJP = Noto_Sans_JP({
+//     weight: ["400", "700"],
+//     subsets: ["latin"],
+//     preload: true,
+// });

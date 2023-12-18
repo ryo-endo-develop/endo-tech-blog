@@ -1,6 +1,7 @@
+import { ParsedUrlQuery } from "querystring";
+
 import { PageProps } from "@/app/lib/definitions";
 import ArticleMeta from "@/app/ui/articles/article-meta";
-import { ParsedUrlQuery } from "querystring";
 
 export type Params = ParsedUrlQuery & {
     slug: string;

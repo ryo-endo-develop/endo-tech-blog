@@ -13,7 +13,7 @@ export type CardProps = {
     };
 };
 
-export default async function CardWrapper() {
+export default function CardWrapper() {
     // const { numberOfInvoices, numberOfCustomers, totalPaidInvoices, totalPendingInvoices } = await fetchCardData();
     const sampleCards = [
         {

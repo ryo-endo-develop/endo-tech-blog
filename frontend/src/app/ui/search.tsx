@@ -6,10 +6,11 @@ import { useDebouncedCallback } from "use-debounce";
 
 export default function Search({ placeholder }: { placeholder: string }) {
     const searchParams = useSearchParams();
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const { replace } = useRouter();
     const pathname = usePathname();
 
-    const handleSearch = useDebouncedCallback((term) => {
+    const handleSearch = useDebouncedCallback((term: string) => {
         console.log(`Searching... ${term}`);
         if (searchParams == null) {
             return;

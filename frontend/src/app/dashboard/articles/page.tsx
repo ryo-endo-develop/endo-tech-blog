@@ -1,8 +1,9 @@
+import { Suspense } from "react";
+
 import ArchiveWrapper from "@/app/ui/articles/archives";
 import CardWrapper from "@/app/ui/articles/cards";
 import { lusitana } from "@/app/ui/fonts";
 import { CardsSkeleton } from "@/app/ui/skeletons";
-import { Suspense } from "react";
 
 export default function Page() {
     return (
