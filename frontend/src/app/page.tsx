@@ -1,8 +1,3 @@
-import { fetchPages } from "./lib/data";
-
-export default async function Home() {
-    const { results } = await fetchPages();
-    console.log(results);
-
+export default function Home() {
     return <div>endo</div>;
 }

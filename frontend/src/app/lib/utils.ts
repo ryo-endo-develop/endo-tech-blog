@@ -1,3 +1,5 @@
+import { PageType, RichTextType } from "./definitions";
+
 export const generatePagination = (currentPage: number, totalPages: number) => {
     // If the total number of pages is 7 or less,
     // display all pages without any ellipsis.
@@ -21,4 +23,46 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     // show the first page, an ellipsis, the current page and its neighbors,
     // another ellipsis, and the last page.
     return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+};
+
+// Notion APIから取得したテキストを画面で使用しやすいように整形
+export const getText = (richTextArr: RichTextType[]) => {
+    try {
+        const textArr = richTextArr.map((richText) => richText.plain_text);
+        return textArr.join("");
+    } catch (err) {
+        console.error(err);
+    }
+    return "";
+};
+
+// Notion APIから取得したカバー画像を画面で使用しやすいように整形
+export const getCover = (cover: PageType["cover"]) => {
+    if (cover && cover.file) {
+        return cover.file.url;
+    }
+
+    if (cover && cover.external) {
+        return cover.external.url;
+    }
+
+    return "/noimage.png";
+};
+
+export const getDate = (date: { start: string }) => {
+    try {
+        return date.start;
+    } catch (err) {
+        console.error(err);
+    }
+    return "-";
+};
+
+export const getMultiSelect = (multiSelect: [{ name: string }]) => {
+    try {
+        return multiSelect.map((tag) => tag.name);
+    } catch (err) {
+        console.error(err);
+    }
+    return [];
 };

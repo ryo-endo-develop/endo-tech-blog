@@ -14,16 +14,6 @@ import {
     PencilIcon,
 } from "@heroicons/react/24/outline";
 
-export type Invoice = {
-    id: string;
-    customer_id: string;
-    amount: number;
-    date: string;
-    // In TypeScript, this is called a string union type.
-    // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
-    status: "pending" | "paid";
-};
-
 export type ArticleTagType =
     | "programmingLanguage"
     | "library"
@@ -79,4 +69,43 @@ export type PageProps = {
 
 export type ArticleProps = {
     page: PageProps;
+};
+
+export type IndexCardProps = { pages: PageType[] };
+
+// Notion API(QueryDatabaseResponse)で取得した値のうち使いたいものを定義
+export type PageType = {
+    id: string;
+    cover: FileType | null;
+    properties: PropertyType;
+};
+
+export type FileType = {
+    file?: { url: string };
+    external?: { url: string };
+};
+
+export type PropertyType = {
+    name: { title: RichTextType[] };
+    author: { rich_text: RichTextType[] };
+    slug: { rich_text: RichTextType[] };
+    published: { date: { start: string } };
+    isPublic: { checkbox: boolean };
+    tags: { multi_select: [{ name: string }] };
+    type: { multi_select: [{ name: string }] };
+};
+
+export type RichTextType = {
+    plain_text: string;
+    href: string | null;
+    annotations: AnnotationType;
+};
+
+export type AnnotationType = {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+    color: string;
 };
